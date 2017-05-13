@@ -4,12 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-        }
+namespace Data_Access_Layer {
+    class DALCiudadesController {
     }
 }
