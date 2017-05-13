@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SuperAdmin.Properties
+namespace PresentationLayer.Properties
 {
 
 

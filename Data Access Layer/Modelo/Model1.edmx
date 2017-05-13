@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="autenticacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="Ciudad" Type="int" />
+          <Property Name="utilizado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudades">
+          <Key>
+            <PropertyRef Name="CiudadID" />
+          </Key>
+          <Property Name="CiudadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="CoordenadaX" Type="int" />
+          <Property Name="CoordenadaY" Type="int" />
+          <Property Name="Radio" Type="float" />
+          <Property Name="URLLogo" Type="varchar" MaxLength="255" />
+          <Property Name="URL" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Admins__Ciudad__3F466844">
+          <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="0..1" />
+          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudades">
+              <PropertyRef Name="CiudadID" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="autenticacionModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudades" EntityType="Self.Ciudades" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Admins__Ciudad__3F466844" Association="Self.FK__Admins__Ciudad__3F466844">
+            <End Role="Ciudades" EntitySet="Ciudades" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="autenticacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ciudad" Type="Int32" />
+          <Property Name="utilizado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ciudades" Relationship="Self.FK__Admins__Ciudad__3F466844" FromRole="Admins" ToRole="Ciudades" />
+        </EntityType>
+        <EntityType Name="Ciudades">
+          <Key>
+            <PropertyRef Name="CiudadID" />
+          </Key>
+          <Property Name="CiudadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CoordenadaX" Type="Int32" />
+          <Property Name="CoordenadaY" Type="Int32" />
+          <Property Name="Radio" Type="Double" />
+          <Property Name="URLLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK__Admins__Ciudad__3F466844" FromRole="Ciudades" ToRole="Admins" />
+        </EntityType>
+        <Association Name="FK__Admins__Ciudad__3F466844">
+          <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="0..1" />
+          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudades">
+              <PropertyRef Name="CiudadID" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="autenticacionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="Ciudades" EntityType="Self.Ciudades" />
+          <AssociationSet Name="FK__Admins__Ciudad__3F466844" Association="Self.FK__Admins__Ciudad__3F466844">
+            <End Role="Ciudades" EntitySet="Ciudades" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="autenticacionModelStoreContainer" CdmEntityContainer="autenticacionEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="autenticacionModel.Admins">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="utilizado" ColumnName="utilizado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudades">
+            <EntityTypeMapping TypeName="autenticacionModel.Ciudades">
+              <MappingFragment StoreEntitySet="Ciudades">
+                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CoordenadaX" ColumnName="CoordenadaX" />
+                <ScalarProperty Name="CoordenadaY" ColumnName="CoordenadaY" />
+                <ScalarProperty Name="Radio" ColumnName="Radio" />
+                <ScalarProperty Name="URLLogo" ColumnName="URLLogo" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
