@@ -40,13 +40,13 @@ namespace PresentationLayer
                 //Direccion desde el que se envia el Email
                 mail.From = new MailAddress("soporte.cerebro@gmail.com", "Cerebro", Encoding.UTF8);
 
-                //Asunto del Correo
+                //Asunto
                 mail.Subject = "Prueba de Envío de Correo";
 
-                //Mensaje del correo
-                mail.Body = "Prueba de Envío de Correo de Gmail desde C# para el barba";
+                //Mensaje
+                mail.Body = "Gmail desde C#";
 
-                //Destinatario del Email
+                //Destinatario
                 mail.To.Add(dir);
                 
                 //Configuracion del SMTP
