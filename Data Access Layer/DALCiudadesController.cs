@@ -35,6 +35,7 @@ namespace Data_Access_Layer {
                 ciudad.Nombre = aux.Nombre;
                 ciudad.Radio = aux.Radio;
                 ciudad.CoordenadaX = aux.CoordenadaX;
+                ciudad.CoordenadaY = aux.CoordenadaY;
                 ciudad.URLLogo = aux.URLLogo;
                 db.SaveChanges();
             }
