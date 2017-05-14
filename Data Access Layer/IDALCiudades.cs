@@ -16,5 +16,7 @@ namespace Data_Access_Layer {
         Ciudades GetCiudad(int id);
 
         List<Ciudades> ListaCiudades();
+
+        String ObtenerURL();
     }
 }
