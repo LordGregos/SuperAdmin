@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLAdminsController.cs" />
+    <Compile Include="BLCiudadesController.cs" />
+    <Compile Include="IBLAdmins.cs" />
+    <Compile Include="IBLCiudades.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
