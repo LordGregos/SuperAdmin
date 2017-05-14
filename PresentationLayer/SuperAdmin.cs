@@ -23,10 +23,13 @@ namespace PresentationLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EnviarMensaje(correo.Text);
+            if(Verificar() == true)
+            {
+                EnviarMensaje(correo.Text);
+            }
         }
 
-        public static bool EnviarMensaje(string dir)
+        private static bool EnviarMensaje(string dir)
         {
             try
             {
@@ -60,6 +63,42 @@ namespace PresentationLayer
                 auxEx = ex.ToString();
                 return false;
             }
+        }
+
+        private bool Verificar()
+        {
+            if (String.IsNullOrEmpty(nombre.Text) == true)
+            {
+                MessageBox.Show("Falta el Nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(correo.Text) == true)
+            {
+                MessageBox.Show("Falta el correo electronico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(contrasena.Text) == true)
+            {
+                MessageBox.Show("Falta ingresar una Contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(ciudad.Text) == true)
+            {
+                MessageBox.Show("Falta el nombre de la Ciudad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(cordX.Text) == true)
+            {
+                MessageBox.Show("Falta una Coordenadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(cordY.Text) == true)
+            {
+                MessageBox.Show("Falta una Coordenadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+                return true;
         }
     }
 }
