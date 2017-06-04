@@ -15,37 +15,8 @@
           <Property Name="Ciudad" Type="int" />
           <Property Name="utilizado" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Ciudades">
-          <Key>
-            <PropertyRef Name="CiudadID" />
-          </Key>
-          <Property Name="CiudadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="55" Nullable="false" />
-          <Property Name="CoordenadaX" Type="int" />
-          <Property Name="CoordenadaY" Type="int" />
-          <Property Name="Radio" Type="float" />
-          <Property Name="URLLogo" Type="varchar" MaxLength="255" />
-          <Property Name="URL" Type="varchar" MaxLength="255" />
-        </EntityType>
-        <Association Name="FK__Admins__Ciudad__3F466844">
-          <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="0..1" />
-          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ciudades">
-              <PropertyRef Name="CiudadID" />
-            </Principal>
-            <Dependent Role="Admins">
-              <PropertyRef Name="Ciudad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="autenticacionModelStoreContainer">
           <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ciudades" EntityType="Self.Ciudades" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Admins__Ciudad__3F466844" Association="Self.FK__Admins__Ciudad__3F466844">
-            <End Role="Ciudades" EntitySet="Ciudades" />
-            <End Role="Admins" EntitySet="Admins" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -61,40 +32,9 @@
           <Property Name="Contrasena" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Ciudad" Type="Int32" />
           <Property Name="utilizado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ciudades" Relationship="Self.FK__Admins__Ciudad__3F466844" FromRole="Admins" ToRole="Ciudades" />
         </EntityType>
-        <EntityType Name="Ciudades">
-          <Key>
-            <PropertyRef Name="CiudadID" />
-          </Key>
-          <Property Name="CiudadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CoordenadaX" Type="Int32" />
-          <Property Name="CoordenadaY" Type="Int32" />
-          <Property Name="Radio" Type="Double" />
-          <Property Name="URLLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Admins" Relationship="Self.FK__Admins__Ciudad__3F466844" FromRole="Ciudades" ToRole="Admins" />
-        </EntityType>
-        <Association Name="FK__Admins__Ciudad__3F466844">
-          <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="0..1" />
-          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ciudades">
-              <PropertyRef Name="CiudadID" />
-            </Principal>
-            <Dependent Role="Admins">
-              <PropertyRef Name="Ciudad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="autenticacionEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admins" />
-          <EntitySet Name="Ciudades" EntityType="Self.Ciudades" />
-          <AssociationSet Name="FK__Admins__Ciudad__3F466844" Association="Self.FK__Admins__Ciudad__3F466844">
-            <End Role="Ciudades" EntitySet="Ciudades" />
-            <End Role="Admins" EntitySet="Admins" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -110,19 +50,6 @@
                 <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
                 <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
                 <ScalarProperty Name="utilizado" ColumnName="utilizado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ciudades">
-            <EntityTypeMapping TypeName="autenticacionModel.Ciudades">
-              <MappingFragment StoreEntitySet="Ciudades">
-                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="CoordenadaX" ColumnName="CoordenadaX" />
-                <ScalarProperty Name="CoordenadaY" ColumnName="CoordenadaY" />
-                <ScalarProperty Name="Radio" ColumnName="Radio" />
-                <ScalarProperty Name="URLLogo" ColumnName="URLLogo" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -143,7 +70,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

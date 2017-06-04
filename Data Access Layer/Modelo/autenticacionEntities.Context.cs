@@ -12,8 +12,7 @@ namespace Data_Access_Layer.Modelo
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using Shared;
-
+    
     public partial class autenticacionEntities : DbContext
     {
         public autenticacionEntities()
@@ -27,6 +26,5 @@ namespace Data_Access_Layer.Modelo
         }
     
         public virtual DbSet<Shared.Entidades.Admins> Admins { get; set; }
-        public virtual DbSet<Shared.Entidades.Ciudades> Ciudades { get; set; }
     }
 }

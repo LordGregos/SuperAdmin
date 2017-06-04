@@ -9,7 +9,7 @@ using System.Net.Mail;
 
 namespace Busines_Layer
 {
-    class BLAdminsController : IBLAdmins
+    public class BLAdminsController : IBLAdmins
     {
         private IDALAdmins _dala = new DALAdminsController();
 

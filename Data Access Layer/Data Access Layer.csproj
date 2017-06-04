@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E175974F-2CFF-4BE8-A005-79463DB05D66}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Data_Access_Layer</RootNamespace>
     <AssemblyName>Data Access Layer</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -52,55 +55,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALAdminsController.cs" />
-    <Compile Include="DALCiudadesController.cs" />
     <Compile Include="IDALAdmins.cs" />
-    <Compile Include="IDALCiudades.cs" />
     <Compile Include="Modelo\Admins.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>autenticacionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Ciudades.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\Model1.Context.cs">
+    <Compile Include="Modelo\autenticacionEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>autenticacionEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Model1.cs">
+    <Compile Include="Modelo\autenticacionEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>autenticacionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Model1.Designer.cs">
+    <Compile Include="Modelo\autenticacionEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>autenticacionEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Modelo\Model1.edmx">
+    <EntityDeploy Include="Modelo\autenticacionEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>autenticacionEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Modelo\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="Modelo\autenticacionEntities.edmx.diagram">
+      <DependentUpon>autenticacionEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Modelo\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Modelo\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -110,6 +96,18 @@
       <Project>{3399b94b-fa27-44a3-b666-74d9f20acd73}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modelo\autenticacionEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>autenticacionEntities.edmx</DependentUpon>
+      <LastGenOutput>autenticacionEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelo\autenticacionEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>autenticacionEntities.edmx</DependentUpon>
+      <LastGenOutput>autenticacionEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

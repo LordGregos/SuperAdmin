@@ -19,7 +19,5 @@ namespace Data_Access_Layer.Modelo
         public string Contrasena { get; set; }
         public Nullable<int> Ciudad { get; set; }
         public bool utilizado { get; set; }
-    
-        public virtual Ciudades Ciudades { get; set; }
     }
 }

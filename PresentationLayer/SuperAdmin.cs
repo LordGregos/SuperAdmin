@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
+using Shared.Entidades;
+using Busines_Layer;
 
 namespace PresentationLayer
 {
@@ -21,12 +23,23 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             if(Verificar() == true)
             {
+                GuardarAdmin();
                 EnviarMensaje(correo.Text);
             }
+        }
+
+        private void GuardarAdmin() {
+            IBLAdmins ibladmin = new BLAdminsController();
+            Admins adm = new Admins() {
+                Contrasena = contrasena.Text,
+                Nombre = nombre.Text
+            };
+            ibladmin.AgregarAdmin(adm);
+
         }
 
         private static bool EnviarMensaje(string dir)
@@ -82,7 +95,7 @@ namespace PresentationLayer
                 MessageBox.Show("Falta ingresar una Contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (String.IsNullOrEmpty(ciudad.Text) == true)
+            /*else if (String.IsNullOrEmpty(ciudad.Text) == true)
             {
                 MessageBox.Show("Falta el nombre de la Ciudad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -96,7 +109,7 @@ namespace PresentationLayer
             {
                 MessageBox.Show("Falta una Coordenadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }
+            }*/
             else
                 return true;
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Data_Access_Layer {
     public class DALAdminsController : IDALAdmins{
 
-        public void AgregarAdmin(Admins adm) {
+        public void AgregarAdmin(Shared.Entidades.Admins adm) {
             using (var db = new Modelo.autenticacionEntities()) 
             {
             db.Admins.Add(adm);
@@ -32,8 +32,8 @@ namespace Data_Access_Layer {
             admobj.Contrasena = adm.Contrasena;
             admobj.Nombre = adm.Nombre;
             admobj.utilizado = adm.utilizado;
-            admobj.Ciudad = adm.Ciudad;
-            admobj.Ciudades = adm.Ciudades;
+            //admobj.Ciudad = adm.Ciudad;
+           // admobj.Ciudades = adm.Ciudades;
             db.SaveChanges();
             }
         }
