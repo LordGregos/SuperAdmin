@@ -11,8 +11,15 @@ namespace Data_Access_Layer {
         public void AgregarAdmin(Shared.Entidades.Admins adm) {
             using (var db = new Modelo.autenticacionEntities()) 
             {
-            db.Admins.Add(adm);
-            db.SaveChanges();
+                try
+                {
+                    db.Admins.Add(adm);
+                    db.SaveChanges();
+                }
+                catch(Exception e)
+                {
+                    //Infierno del programador                
+                }
             }
 
         }

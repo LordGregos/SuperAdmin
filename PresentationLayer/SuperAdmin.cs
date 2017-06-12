@@ -21,6 +21,8 @@ namespace PresentationLayer
         public SuperAdmin()
         {
             InitializeComponent();
+            contrasena.Visible = false;
+            contrasena.Text = Shared.Cifrado.Generate();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -28,21 +30,21 @@ namespace PresentationLayer
             if(Verificar() == true)
             {
                 GuardarAdmin();
-                EnviarMensaje(correo.Text);
+                EnviarMensaje(correo.Text, contrasena.Text, nombre.Text);
             }
         }
 
         private void GuardarAdmin() {
             IBLAdmins ibladmin = new BLAdminsController();
             Admins adm = new Admins() {
-                Contrasena = contrasena.Text,
+                Contrasena = Shared.Cifrado.CreateSHAHash(contrasena.Text,nombre.Text),
                 Nombre = nombre.Text
             };
             ibladmin.AgregarAdmin(adm);
 
         }
 
-        private static bool EnviarMensaje(string dir)
+        private static bool EnviarMensaje(string dir, string contrasena, string nombre)
         {
             try
             {
@@ -54,14 +56,29 @@ namespace PresentationLayer
                 mail.From = new MailAddress("soporte.cerebro@gmail.com", "Cerebro", Encoding.UTF8);
 
                 //Asunto
-                mail.Subject = "Prueba de Envío de Correo";
+                mail.Subject = "TSI 2017- CEREBRO";
 
                 //Mensaje
-                mail.Body = "Gmail desde C#";
 
+                string body = "<h3>¡Bienvenido a Cerebro!</h3>";
+                body += "<br />";
+                body += "Estimad@ Administrador/a,";
+                body += "<br />";
+                body += "<p>Es un placer darle la bienvenida a nuestra aplicación, agradecemos contar con su servicio!</p>";
+                //agregar pagina de creacion !!!!!!!!!!!!!!!!!!
+                body += "<p><a href='" + "createcity.cerebro.localhost" + "'>Click aquí</a> para terminar la creación de su ciudad</p>";
+                body += "<p>Usuario: <b>" + nombre + "</b> </p>";
+                body += "  <p>Contraseña: <b>" + contrasena + "</b></p>";
+                body += "<br />";
+                body += "Desde ya muchas gracias,";
+                body += "<br />";
+                body += "<b>Soporte Cerebro</b>";
+
+                mail.Body = body;
+                mail.IsBodyHtml = true;
                 //Destinatario
                 mail.To.Add(dir);
-                
+
                 //Configuracion del SMTP
                 SmtpServer.Port = 587; //Gmail Port
 
@@ -73,10 +90,12 @@ namespace PresentationLayer
             }
             catch (Exception ex)
             {
-                auxEx = ex.ToString();
+                Console.WriteLine(ex.ToString());
                 return false;
             }
         }
+
+        
 
         private bool Verificar()
         {

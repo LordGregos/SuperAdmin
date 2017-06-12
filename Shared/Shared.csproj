@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cifrado.cs" />
     <Compile Include="Entidades\Admins.cs" />
     <Compile Include="Entidades\Ciudades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
