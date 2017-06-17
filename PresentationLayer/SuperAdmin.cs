@@ -28,7 +28,7 @@ namespace PresentationLayer
             if(Verificar() == true)
             {
                 GuardarAdmin();
-                EnviarMensaje(correo.Text);
+                EnviarMensaje(correo.Text, nombre.Text, contrasena.Text);
             }
         }
 
@@ -42,7 +42,7 @@ namespace PresentationLayer
 
         }
 
-        private static bool EnviarMensaje(string dir)
+        private static bool EnviarMensaje(string dir, string nombre, string pass)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace PresentationLayer
                 mail.Subject = "Prueba de Envío de Correo";
 
                 //Mensaje
-                mail.Body = "Gmail desde C#";
+                mail.Body = "Username: " + nombre + "\n"+ "Password: " + pass;
 
                 //Destinatario
                 mail.To.Add(dir);
