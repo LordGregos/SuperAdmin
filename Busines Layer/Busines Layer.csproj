@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLAdminsController.cs" />
+    <Compile Include="Cifrado.cs" />
     <Compile Include="IBLAdmins.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

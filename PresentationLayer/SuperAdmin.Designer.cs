@@ -35,11 +35,12 @@
             this.nombre = new System.Windows.Forms.TextBox();
             this.correo = new System.Windows.Forms.TextBox();
             this.contrasena = new System.Windows.Forms.TextBox();
+            this.usuario = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // agregar
             // 
-            this.agregar.Location = new System.Drawing.Point(122, 103);
+            this.agregar.Location = new System.Drawing.Point(122, 117);
             this.agregar.Name = "agregar";
             this.agregar.Size = new System.Drawing.Size(75, 23);
             this.agregar.TabIndex = 0;
@@ -63,9 +64,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.Location = new System.Drawing.Point(12, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.Size = new System.Drawing.Size(57, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Contraseña";
+            this.label2.Text = "Usuario";
             // 
             // label3
             // 
@@ -93,16 +94,24 @@
             // 
             // contrasena
             // 
-            this.contrasena.Location = new System.Drawing.Point(117, 64);
+            this.contrasena.Location = new System.Drawing.Point(117, 90);
             this.contrasena.Name = "contrasena";
             this.contrasena.Size = new System.Drawing.Size(187, 20);
             this.contrasena.TabIndex = 8;
+            // 
+            // usuario
+            // 
+            this.usuario.Location = new System.Drawing.Point(117, 64);
+            this.usuario.Name = "usuario";
+            this.usuario.Size = new System.Drawing.Size(187, 20);
+            this.usuario.TabIndex = 9;
             // 
             // SuperAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 143);
+            this.ClientSize = new System.Drawing.Size(317, 145);
+            this.Controls.Add(this.usuario);
             this.Controls.Add(this.contrasena);
             this.Controls.Add(this.correo);
             this.Controls.Add(this.nombre);
@@ -126,6 +135,7 @@
         private System.Windows.Forms.TextBox nombre;
         private System.Windows.Forms.TextBox correo;
         private System.Windows.Forms.TextBox contrasena;
+        private System.Windows.Forms.TextBox usuario;
     }
 }
 
