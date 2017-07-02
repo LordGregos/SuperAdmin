@@ -17,18 +17,25 @@ namespace PresentationLayer
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if(Verificar() == true)
+            try
             {
-                contrasena.Text = Cifrado.Generate();
-                string usuarioAux = usuario.Text;
-                GuardarAdmin();
-                EnviarMensaje(correo.Text, nombre.Text, contrasena.Text, usuario.Text);
-                correo.Text = "";
-                nombre.Text = "";
-                contrasena.Text = "";
-                usuario.Text = "";
-                MessageBox.Show("Admin " + usuarioAux + " se guardo correctamente.");
+                if (Verificar() == true)
+                {
+                    contrasena.Text = Cifrado.Generate();
+                    string usuarioAux = usuario.Text;
+                    GuardarAdmin();
+                    EnviarMensaje(correo.Text, nombre.Text, contrasena.Text, usuario.Text);
+                    correo.Text = "";
+                    nombre.Text = "";
+                    contrasena.Text = "";
+                    usuario.Text = "";
+                    MessageBox.Show("Admin " + usuarioAux + " se guardo correctamente.");
+                }
             }
+            catch(Exception excepcion)
+            {
+                MessageBox.Show("- ERROR #404 -\n \n" + excepcion);
+            }            
         }
 
         private void GuardarAdmin() {
