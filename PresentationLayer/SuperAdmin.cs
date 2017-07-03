@@ -42,7 +42,6 @@ namespace PresentationLayer
             IBLAdmins ibladmin = new BLAdminsController();
             string contrasenaAux = Cifrado.CreateSHAHash(contrasena.Text,usuario.Text);
             Admins adm = new Admins() {
-
                 Contrasena = contrasenaAux,
                 Nombre = usuario.Text
             };
